@@ -1,0 +1,38 @@
+ <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "ShareAway", root_path, id: "logo" %>
+           
+      </div>
+    </div>
+  </header>
+
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  
+
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true %>
+
+
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off" %>
+
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+
+    <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+
+<% end %>
+  </div>
+</div>

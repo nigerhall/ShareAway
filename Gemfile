@@ -14,6 +14,7 @@ gem 'ransack'
 gem 'acts-as-taggable-on'
 gem 'devise'
 
+
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'

@@ -1,0 +1,43 @@
+  <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "ShareAway", root_path, id: "logo" %>
+    
+         <nav>
+        <ul class="nav pull-right">
+
+          
+            <% if current_user.profile.nil? %>
+            <li><%= link_to "Create Profile", newprofile_path(current_user) %></li>
+            <% end %>
+            
+            <% if current_user.profile.present? %>
+            <li><%= link_to "Edit Profile", edit_path(current_user) %></li>
+            <% end %>
+
+            <% if signed_in? %>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
+            <% end %>
+ 
+        </ul>
+      </nav>
+
+      </div>
+    </div>
+    
+      </header>
+
+
+      <h1>
+        <%= image_tag @profile.avatar.url(:medium) rescue nil %>
+    
+      </h1>
+    </section>
+ 
+<div class="span8">
+ <div class="profile">
+        <%= render @profile rescue nil %>
+      </div>
+  
+       
+  
