@@ -11,6 +11,11 @@
             <li><%= link_to "Create Profile", newprofile_path(current_user) %></li>
             <% end %>
             
+            
+           <% if user_signed_in? %>
+           <li><%= link_to "Search members", profiles_path %></li>
+           <% end %>
+
             <% if current_user.profile.present? %>
             <li><%= link_to "Edit Profile", edit_path(current_user) %></li>
             <% end %>
@@ -39,5 +44,5 @@
         <%= render @profile rescue nil %>
       </div>
   
-       
+<%= render 'connect_form' if signed_in? %>        
   

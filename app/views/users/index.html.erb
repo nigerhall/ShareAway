@@ -6,6 +6,9 @@
           
       <nav>
         <ul class="nav pull-right">
+          <% if user_signed_in? %>
+           <li><%= link_to "Search members", profiles_path %></li>
+            <% end %>
           
        <% if signed_in? %>
             <li><%= link_to "My Profile", current_user %></li>

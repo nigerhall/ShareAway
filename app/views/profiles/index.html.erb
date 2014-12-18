@@ -2,11 +2,15 @@
       <div class="navbar-inner">
         <div class="container">
           <%= link_to "ShareAway", root_path, id: "logo" %>
-          
+   
+
+
           
       <nav>
         <ul class="nav pull-right">
-          
+         <% if user_signed_in? %>
+           <li><%= link_to "Search members", profiles_path %></li>
+            <% end %> 
        <% if signed_in? %>
             <li><%= link_to "My Profile", current_user %></li>
 
