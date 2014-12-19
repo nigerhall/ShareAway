@@ -1,0 +1,38 @@
+  <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "ShareAway", root_path, id: "logo" %>
+
+
+     <nav>
+        <ul class="nav pull-right">
+            <% if user_signed_in? %>
+           <li><%= link_to "Search members", profiles_path %></li>
+            <% end %>
+            <% if signed_in? %>
+            <li><%= link_to "My Profile", current_user %></li>
+            <li>
+                 <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+            </li>
+            
+
+
+            <% end %>
+        </ul>
+      </nav>
+
+
+      </div>
+    </div>
+  </header>
+
+<% provide(:title, 'About') %>
+
+<h1>About ShareAway</h1>
+
+<p>
+  ShareAway is an app for Android and iPhone devices.  The idea is that what you Share should go Away.
+</p>
+</p>
+  Shares can only be sent and viewed on your mobile device.  You may use this website to access and edit your profile and to search and connect with other members.
+</p>

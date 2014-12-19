@@ -1,0 +1,68 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "ShareAway", root_path, id: "logo" %>
+          
+          
+      <nav>
+        <ul class="nav pull-right">
+          <% if user_signed_in? %>
+           <li><%= link_to "Search members", profiles_path %></li>
+            <% end %>
+          
+       <% if signed_in? %>
+            <li><%= link_to "My Profile", current_user %></li>
+
+            <li>
+                  <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+            </li>
+            <% end %>
+
+        </ul>
+      </nav>
+
+        </div>
+    </div>
+
+ <aside class="span4 offset1">
+
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :name %>
+  <%= f.search_field :profile_name_cont %>
+
+  <%= f.label :email %>
+  <%= f.search_field :email_cont %>
+  
+  <%= f.label :"Gender" %>
+  <%= f.search_field :profile_gender_cont %>
+
+  <%= f.label :"Age" %>
+  <%= f.search_field :profile_age_cont %>
+
+  <%= f.label :"Living where" %>
+  <%= f.search_field :profile_mytown_cont %>
+  
+  <%= f.label :"School attended" %>
+  <%= f.search_field :profile_myschools_cont %>
+
+
+  <%= f.submit %>
+<% end %>
+
+  </aside>
+
+
+<ul class="users">
+  <% @user.each do |user| %>
+   <li>
+   <%= link_to user.email, user %>
+   </li>
+  <% end %>
+</ul>
+
+
+
+
+
+

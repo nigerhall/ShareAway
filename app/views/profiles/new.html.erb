@@ -1,0 +1,65 @@
+  <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "ShareAway", root_path, id: "logo" %>
+    
+         <nav>
+        <ul class="nav pull-right">
+          
+            <% if signed_in? %>
+            <li><%= link_to "Search members", users_path %></li>
+            <li><%= link_to "Change password", edit_user_registration_path %></li>
+            <li>
+                  <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+            </li>
+            <% end %>
+        </ul>
+      </nav>
+
+      </div>
+    </div>
+  </header>
+
+
+ <div class="row">
+ <div class="span6 offset1">
+<%= form_for @profile, :html => {:multipart => true } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :"name" %>
+      <%= f.text_field :name %>
+      
+      <%= f.label :gender %>
+      <%= f.select :gender, [" ", "female", "male", "transgender"] %>
+
+      <%= f.label :birthday %>
+      <%= f.date_select :birthdate, :start_year => 1922, :end_year => Date.today.year %>
+
+
+      <%= f.label :"where I live" %>
+      <%= f.text_field :mytown %>
+
+      <%= f.label :"my schools" %>
+      <%= f.text_field :myschools %>
+
+      <%= f.label :"how I spend my time" %>
+      <%= f.text_field :myjob %>
+      
+      <%= f.label :"about me" %>
+      <%= f.text_field :facts %>
+      
+      <p>
+<%= f.label :avatar, "Choose your profile photo" %>
+<%= f.file_field :avatar %>
+</p>
+
+
+  <%= f.submit "Create Profile", class: "btn btn-large btn-primary" %>
+<% end %>
+
+
+  </div>
+</div>
+
+
+
